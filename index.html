@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiminullAI — Applied AI Systems for Local Operators</title>
+  <meta name="description" content="LiminullAI builds applied AI systems for local businesses: lead capture, missed-lead recovery, CRM cleanup, review systems, local search, and operator dashboards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#e9e5dc;
+      --paper2:#d8d0c3;
+      --ink:#070707;
+      --muted:#6e695f;
+      --line:#1d1b17;
+      --line-soft:rgba(29,27,23,.18);
+      --black:#050505;
+      --white:#fbfaf6;
+      --acid:#46f4e3;
+      --rust:#9b402f;
+      --blue:#1d46ff;
+      --max:1440px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    ::selection{background:var(--ink);color:var(--paper)}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+    .frame{min-height:100vh;border:10px solid var(--ink);background:
+      linear-gradient(rgba(7,7,7,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(7,7,7,.028) 1px, transparent 1px),
+      var(--paper);background-size:42px 42px;}
+    .topbar{position:sticky;top:0;z-index:40;display:grid;grid-template-columns:310px 1fr 300px;align-items:stretch;border-bottom:2px solid var(--ink);background:rgba(233,229,220,.94);backdrop-filter:blur(10px)}
+    .brand{display:flex;align-items:center;gap:14px;padding:10px 18px;border-right:2px solid var(--ink)}
+    .brand img{width:60px;height:60px;object-fit:contain;padding:0;border:2px solid var(--ink);background:var(--ink);filter:none;image-rendering:auto;transform:translateZ(0)}
+    .brand b{display:block;font-size:21px;letter-spacing:-.045em}.brand span{display:block;margin-top:2px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+    .nav{display:grid;grid-template-columns:repeat(4,1fr)}.nav a{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.nav a:hover{background:var(--ink);color:var(--paper)}
+    .top-actions{display:grid;grid-template-columns:1fr 1fr}.top-actions a{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.top-actions a:last-child{background:var(--ink);color:var(--paper)}.top-actions a:hover{background:var(--acid);color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1fr 410px;min-height:calc(100vh - 82px);border-bottom:2px solid var(--ink)}
+    .hero-main{position:relative;padding:52px clamp(24px,5vw,74px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-right:2px solid var(--ink)}
+    .stamp-row{display:flex;flex-wrap:wrap;gap:8px}.stamp{border:1px solid var(--ink);padding:7px 9px;background:rgba(233,229,220,.82);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.stamp.hot{background:var(--acid)}
+    h1{margin:0;max-width:1000px;font-size:clamp(62px,10vw,156px);line-height:.82;letter-spacing:-.085em;font-weight:700;text-transform:uppercase}.h1-small{font-weight:500;color:transparent;-webkit-text-stroke:2px var(--ink)}
+    .hero-bottom{display:grid;grid-template-columns:minmax(260px,520px) 1fr;gap:36px;align-items:end}.lead{font-size:18px;line-height:1.45;letter-spacing:-.025em;max-width:560px}.lead b{background:var(--ink);color:var(--paper);padding:0 4px}.cta-line{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}.btn.primary{background:var(--ink);color:var(--paper)}.btn:hover{background:var(--acid);color:var(--ink)}
+    .hero-side{display:grid;grid-template-rows:300px 1fr;background:var(--black);color:var(--paper)}.mark-box{position:relative;display:grid;place-items:center;border-bottom:2px solid var(--paper);overflow:hidden}.mark-box:before{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(233,229,220,.35);border-radius:50%}.mark-box:after{content:'LIMINULL / NULL-SPACE';position:absolute;bottom:14px;left:16px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;color:rgba(233,229,220,.62)}.mark-box img{position:relative;width:170px;height:170px;object-fit:cover;filter:grayscale(1) contrast(1.2);mix-blend-mode:screen}
+    .ops-panel{padding:18px;display:flex;flex-direction:column;gap:12px}.ops-title{display:flex;justify-content:space-between;border-bottom:1px solid rgba(233,229,220,.32);padding-bottom:10px;font-size:11px;color:rgba(233,229,220,.72);text-transform:uppercase;letter-spacing:.1em}.ops-row{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:center;border:1px solid rgba(233,229,220,.22);padding:11px 10px}.ops-row span:first-child{color:rgba(233,229,220,.58);font-size:10px}.ops-row b{font-size:13px}.ops-row em{font-style:normal;color:var(--acid);font-size:10px;text-transform:uppercase}.scanline{height:9px;background:repeating-linear-gradient(90deg,var(--acid) 0 12px,transparent 12px 20px);margin-top:auto}
+    .marquee{overflow:hidden;border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper);white-space:nowrap}.marquee div{display:inline-block;padding:12px 0 12px 100vw;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;animation:marquee 28s linear infinite}.marquee span{margin-right:42px;color:var(--acid)}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    section{border-bottom:2px solid var(--ink)}.section-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:320px 1fr}.section-label{border-right:2px solid var(--ink);padding:28px 22px;position:sticky;top:82px;height:max-content}.section-label .num{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.section-label h2{margin:16px 0 0;font-size:34px;line-height:.92;letter-spacing:-.06em;text-transform:uppercase}.section-body{padding:28px}.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);border-left:2px solid var(--ink)}.archive-card{min-height:260px;padding:18px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);background:rgba(233,229,220,.66);display:flex;flex-direction:column;justify-content:space-between;transition:.18s ease}.archive-card:hover{background:var(--ink);color:var(--paper);transform:translate(-4px,-4px);box-shadow:4px 4px 0 var(--acid)}.archive-card .id{font-size:11px;color:var(--muted);text-transform:uppercase}.archive-card:hover .id{color:var(--acid)}.archive-card h3{font-size:30px;line-height:.95;letter-spacing:-.06em;margin:24px 0 12px;text-transform:uppercase}.archive-card p{font-size:14px;line-height:1.42;margin:0}.tagline{display:flex;justify-content:space-between;gap:10px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .method{display:grid;grid-template-columns:1.05fr .95fr;gap:28px}.manifesto{border:2px solid var(--ink);padding:26px;background:var(--black);color:var(--paper)}.manifesto h3{margin:0 0 22px;font-size:46px;line-height:.88;letter-spacing:-.07em;text-transform:uppercase}.manifesto p{font-size:18px;line-height:1.5;color:#d9d4ca}.method-list{border-top:2px solid var(--ink)}.method-row{display:grid;grid-template-columns:82px 1fr;border-bottom:2px solid var(--ink);min-height:112px}.method-row span{border-right:2px solid var(--ink);padding:18px;font-size:11px;color:var(--muted)}.method-row div{padding:18px}.method-row b{display:block;font-size:22px;letter-spacing:-.04em;text-transform:uppercase}.method-row p{margin:8px 0 0;color:var(--muted);line-height:1.45}
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}.package{min-height:420px;padding:20px;border-right:2px solid var(--ink);display:flex;flex-direction:column}.package:last-child{border-right:0}.package:nth-child(2){background:var(--ink);color:var(--paper)}.package small{font-family:'IBM Plex Mono';text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.package:nth-child(2) small{color:var(--acid)}.package h3{font-size:38px;line-height:.9;letter-spacing:-.065em;text-transform:uppercase;margin:22px 0}.price{font-size:18px;font-weight:700;margin-bottom:20px}.package ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.package li{font-size:14px;line-height:1.35}.package li:before{content:'— ';font-family:'IBM Plex Mono'}.package .btn{margin-top:auto;width:100%}.package:nth-child(2) .btn{background:var(--acid);color:var(--ink)}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:540px}.contact-copy{padding:38px;border-right:2px solid var(--ink);background:var(--ink);color:var(--paper)}.contact-copy h2{font-size:clamp(48px,7vw,110px);line-height:.82;letter-spacing:-.08em;text-transform:uppercase;margin:0}.contact-copy p{max-width:560px;font-size:18px;line-height:1.48;color:#d8d0c3}.contact-links{display:grid;gap:12px;margin-top:34px}.contact-links a{display:flex;justify-content:space-between;gap:16px;border:1px solid rgba(233,229,220,.45);padding:14px;color:var(--paper)}.contact-links span{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;color:var(--acid)}.contact-form{padding:38px}.field{display:grid;gap:8px;margin-bottom:14px}.field label{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.1em}.field input,.field textarea{width:100%;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:14px;outline:none}.field textarea{min-height:160px;resize:vertical}.field input:focus,.field textarea:focus{background:var(--white);box-shadow:4px 4px 0 var(--acid)}
+    footer{display:flex;justify-content:space-between;gap:20px;padding:18px 22px;font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--paper)}
+
+    .liquid-stage,.td-video,.model-preview{position:absolute;inset:0;width:100%;height:100%;display:block;background:#000}.td-video{object-fit:cover;background:#000;filter:contrast(1.08) saturate(1.08)}.model-preview{object-fit:cover;filter:contrast(1.16) saturate(1.22) brightness(1.08);mix-blend-mode:normal;z-index:2}.seamless-spire{position:absolute;inset:0;z-index:2;background:#000;overflow:hidden}.seamless-spire .td-video{z-index:1;opacity:0!important;transition:opacity .72s linear;will-change:opacity;transform:translateZ(0)}.seamless-spire .td-video.is-active{opacity:1!important;z-index:2}
+    .glass-float{position:absolute;right:18px;top:18px;z-index:3;width:112px;padding:10px 10px 12px;border:1px solid rgba(251,250,246,.36);background:linear-gradient(135deg,rgba(251,250,246,.20),rgba(251,250,246,.05));backdrop-filter:blur(18px) saturate(1.45);-webkit-backdrop-filter:blur(18px) saturate(1.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.48),0 18px 50px rgba(0,0,0,.38);color:var(--paper);font-size:9px;text-transform:uppercase;letter-spacing:.09em;line-height:1.4;mix-blend-mode:screen}
+    .glass-float:before{content:'';position:absolute;inset:1px;border-top:1px solid rgba(255,255,255,.55);border-left:1px solid rgba(255,255,255,.18);pointer-events:none}.glass-float b{display:block;color:var(--acid);font-size:17px;letter-spacing:-.04em;margin-top:4px}.mark-box img:not(.model-preview){z-index:2;width:98px;height:98px;opacity:.78;filter:grayscale(1) contrast(1.35) drop-shadow(0 0 30px rgba(233,229,220,.38));mix-blend-mode:screen}.mark-box .model-preview{position:absolute;inset:0;width:100%;height:100%;opacity:1;filter:contrast(1.16) saturate(1.22) brightness(1.08);mix-blend-mode:normal}.mark-box:before{z-index:1}.mark-box:after{z-index:4}.ops-panel{position:relative;overflow:hidden}.ops-panel:before{content:'';position:absolute;inset:12px;border:1px solid rgba(251,250,246,.13);background:linear-gradient(135deg,rgba(251,250,246,.10),rgba(251,250,246,.025));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);pointer-events:none}.ops-title,.ops-row,.scanline{position:relative;z-index:1}.ops-row{background:linear-gradient(135deg,rgba(251,250,246,.10),rgba(251,250,246,.025));backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+    .archive-card,.package,.manifesto,.contact-copy{position:relative;overflow:hidden}.archive-card:before,.package:before,.manifesto:before,.contact-copy:before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 18%,rgba(255,255,255,.18) 28%,transparent 42%);transform:translateX(-120%);transition:transform .65s cubic-bezier(.2,.8,.2,1);pointer-events:none}.archive-card:hover:before,.package:hover:before,.manifesto:hover:before,.contact-copy:hover:before{transform:translateX(120%)}
+    .liquid-note{position:absolute;left:18px;top:18px;z-index:3;font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(233,229,220,.66);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+    @media(max-width:1000px){.topbar{grid-template-columns:1fr}.brand,.nav a,.top-actions a{border-right:0;border-bottom:1px solid var(--ink)}.hero{grid-template-columns:1fr}.hero-main{border-right:0}.hero-side{grid-template-rows:230px auto}.section-grid{grid-template-columns:1fr}.section-label{position:relative;top:0;border-right:0;border-bottom:2px solid var(--ink)}.archive-grid,.packages{grid-template-columns:1fr 1fr}.method,.contact-wrap,.hero-bottom{grid-template-columns:1fr}.cta-line{justify-content:flex-start}}
+    @media(max-width:650px){.frame{border-width:6px}.nav,.top-actions{grid-template-columns:1fr 1fr}.hero-main{padding:34px 18px}h1{font-size:52px}.archive-grid,.packages{grid-template-columns:1fr}.package{border-right:0;border-bottom:2px solid var(--ink)}.contact-copy,.contact-form,.section-body{padding:22px}.hero-side{display:none}footer{display:block;line-height:1.8}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee div{animation:none}.archive-card:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="LiminullAI home">
+        <img src="assets/logo-header.svg" alt="Liminull logo">
+        <div><b>LIMINULL</b><span>Applied AI for local operators</span></div>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#systems">Systems</a><a href="#method">Method</a><a href="#offers">Offers</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="top-actions"><a id="phoneTop" href="tel:">Call</a><a href="#contact">Leak Map</a></div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-main">
+          <div class="stamp-row mono"><span class="stamp hot">LIMINULLAI / CT-OPS</span><span class="stamp">lead capture</span><span class="stamp">review loops</span><span class="stamp">crm cleanup</span></div>
+          <h1><span class="h1-small">Local</span><br>AI systems<br>without the circus.</h1>
+          <div class="hero-bottom">
+            <p class="lead">We build applied AI infrastructure for local service businesses: the unglamorous layer between <b>website</b>, <b>phone</b>, <b>inbox</b>, <b>CRM</b>, <b>reviews</b>, and the human operator who still has to close the job.</p>
+            <div class="cta-line"><a class="btn primary" href="#contact">Map the leaks</a><a class="btn" href="#systems">Open the archive</a></div>
+          </div>
+        </div>
+        <aside class="hero-side" aria-label="LiminullAI operator view">
+          <div class="mark-box"><video class="model-preview td-video" autoplay muted loop playsinline preload="auto" poster="assets/liminull_alien_spire_poster.png?v=spire-recursive-05" aria-label="Aquamarine chrome alien spire artifact seamless recursive loop"><source src="assets/liminull_alien_spire.webm?v=spire-recursive-05" type="video/webm"><source src="assets/liminull_alien_spire.mp4?v=spire-recursive-05" type="video/mp4"></video><div class="liquid-note">TD alien spire loop</div><div class="glass-float mono">live artifact<b>SPIRE 01</b></div></div>
+          <div class="ops-panel mono">
+            <div class="ops-title"><span>LIMINULL / OPERATOR VIEW</span><span>LIVE</span></div>
+            <div class="ops-row"><span>signal</span><b>Inbound lead</b><em>logged</em></div>
+            <div class="ops-row"><span>response</span><b>Draft + route</b><em>ready</em></div>
+            <div class="ops-row"><span>trust</span><b>Review ask</b><em>queued</em></div>
+            <div class="ops-row"><span>sales</span><b>Follow-up gap</b><em>flagged</em></div>
+            <div class="scanline"></div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="marquee mono"><div><span>NO MASCOT CHATBOT</span> MISSED LEADS / RESPONSE TIME / CRM VISIBILITY / REVIEW LOOPS / LOCAL SEARCH / HUMAN APPROVAL / <span>NO MASCOT CHATBOT</span> MISSED LEADS / RESPONSE TIME / CRM VISIBILITY / REVIEW LOOPS / LOCAL SEARCH / HUMAN APPROVAL / </div></div>
+
+      <section id="systems">
+        <div class="section-grid">
+          <div class="section-label"><div class="num mono">Archive 001</div><h2>Systems we install</h2></div>
+          <div class="section-body">
+            <div class="archive-grid">
+              <article class="archive-card"><div><div class="id mono">SYS-01 / WEB</div><h3>Signal-first websites</h3><p>Service pages, intake paths, proof blocks, and mobile flows built to remove friction instead of decorate it.</p></div><div class="tagline mono"><span>site</span><span>capture</span></div></article>
+              <article class="archive-card"><div><div class="id mono">SYS-02 / RESPONSE</div><h3>Missed-lead recovery</h3><p>Speed-to-lead drafts, missed-call prompts, quote nudges, and human-approved follow-up sequences.</p></div><div class="tagline mono"><span>inbox</span><span>phone</span></div></article>
+              <article class="archive-card"><div><div class="id mono">SYS-03 / CRM</div><h3>CRM cleanup layer</h3><p>Stages, tags, reminders, routing, and owner visibility designed around how the business actually sells.</p></div><div class="tagline mono"><span>pipeline</span><span>tasks</span></div></article>
+              <article class="archive-card"><div><div class="id mono">SYS-04 / TRUST</div><h3>Reputation engine</h3><p>Post-job review asks, testimonial capture, response support, and proof loops that compound local credibility.</p></div><div class="tagline mono"><span>reviews</span><span>proof</span></div></article>
+              <article class="archive-card"><div><div class="id mono">SYS-05 / SEARCH</div><h3>Local search base</h3><p>Google profile alignment, service-area pages, metadata, schema, and search intent cleanup without SEO theater.</p></div><div class="tagline mono"><span>local</span><span>findability</span></div></article>
+              <article class="archive-card"><div><div class="id mono">SYS-06 / CONTENT</div><h3>Content operating system</h3><p>Turn jobs, questions, wins, objections, and before/after proof into repeatable local content without daily chaos.</p></div><div class="tagline mono"><span>social</span><span>assets</span></div></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="method">
+        <div class="section-grid">
+          <div class="section-label"><div class="num mono">Archive 002</div><h2>How it operates</h2></div>
+          <div class="section-body method">
+            <div class="manifesto"><h3>AI is not the product. The operating layer is.</h3><p>The point is not to replace the owner, dispatcher, estimator, or sales rep. The point is to remove avoidable delay, make follow-up visible, and give the human operator better drafts, cleaner queues, and fewer dropped balls.</p></div>
+            <div class="method-list">
+              <div class="method-row"><span class="mono">01</span><div><b>Audit the leaks</b><p>Map where leads die: unclear offers, slow replies, missed calls, weak proof, dead CRM stages.</p></div></div>
+              <div class="method-row"><span class="mono">02</span><div><b>Build the minimum useful system</b><p>Pages, automations, CRM rules, approval gates, and dashboard views that serve the actual workflow.</p></div></div>
+              <div class="method-row"><span class="mono">03</span><div><b>Launch with restraints</b><p>Human approval where it matters. Conservative defaults. Clear logs. No reckless automation.</p></div></div>
+              <div class="method-row"><span class="mono">04</span><div><b>Operate and tighten</b><p>Improve routing, copy, response quality, proof, and local visibility as real behavior comes in.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="offers">
+        <div class="section-grid">
+          <div class="section-label"><div class="num mono">Archive 003</div><h2>Service paths</h2></div>
+          <div class="section-body">
+            <div class="packages">
+              <article class="package"><small>Starter</small><h3>Leak Map</h3><div class="price">Free / intro</div><ul><li>Website and CTA scan</li><li>Lead capture check</li><li>Review and social scan</li><li>3–5 practical fixes</li></ul><a class="btn" href="#contact">Map the leaks</a></article>
+              <article class="package"><small>Core</small><h3>LiminullAI Buildout</h3><div class="price">Custom / build</div><ul><li>Website upgrades</li><li>CRM and pipeline setup</li><li>AI-assisted follow-up</li><li>Review request flows</li><li>Local search foundation</li></ul><a class="btn" href="#contact">Scope the build</a></article>
+              <article class="package"><small>Ongoing</small><h3>Ops Layer</h3><div class="price">Monthly / support</div><ul><li>Automation monitoring</li><li>Campaign improvements</li><li>Content/social systems</li><li>Reporting and iteration</li><li>New workflow builds</li></ul><a class="btn" href="#contact">Discuss operations</a></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact-wrap">
+          <div class="contact-copy"><h2>Where are leads going cold?</h2><p>Call, email, or send a short note. The form opens an email draft. Replace the placeholder inbox and phone number once your real contact channel is ready.</p><div class="contact-links"><a id="emailLink" href="mailto:lab@liminullai.com?subject=LiminullAI%20Leak%20Map"><span>Email</span><b id="emailText">lab@liminullai.com</b></a><a id="phoneLink" href="tel:"><span>Phone</span><b id="phoneText">Contact via form</b></a></div></div>
+          <form class="contact-form" id="contactForm"><div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required></div><div class="field"><label for="business">Business</label><input id="business" name="business" placeholder="Business name"></div><div class="field"><label for="contactInfo">Email or phone</label><input id="contactInfo" name="contactInfo" placeholder="Where should we reach you?"></div><div class="field"><label for="message">What needs fixing?</label><textarea id="message" name="message" placeholder="Website, missed calls, follow-up, reviews, CRM, social, local search..."></textarea></div><button class="btn primary" type="submit" style="width:100%">Open email draft</button></form>
+        </div>
+      </section>
+    </main>
+    <footer><div>LiminullAI / applied AI systems for local operators</div><div>web · crm · inbox · phone · reviews · local search</div></footer>
+  </div>
+
+  <script>
+    var COMPANY_EMAIL = 'lab@liminullai.com';
+var COMPANY_PHONE_DISPLAY = '440-714-9854 / 860-772-9621';
+var COMPANY_PHONE_TEL = '+14407149854';
+    var emailText = document.getElementById('emailText');
+    var emailLink = document.getElementById('emailLink');
+    var phoneText = document.getElementById('phoneText');
+    var phoneLink = document.getElementById('phoneLink');
+    var phoneTop = document.getElementById('phoneTop');
+    var contactForm = document.getElementById('contactForm');
+    if (emailText) emailText.textContent = COMPANY_EMAIL;
+    if (emailLink) emailLink.href = 'mailto:' + COMPANY_EMAIL + '?subject=' + encodeURIComponent('LiminullAI Leak Map');
+    if (phoneText) phoneText.textContent = COMPANY_PHONE_DISPLAY;
+    if (phoneLink) phoneLink.href = 'tel:' + COMPANY_PHONE_TEL;
+    if (phoneTop) phoneTop.href = 'tel:' + COMPANY_PHONE_TEL;
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        var data = new FormData(contactForm);
+
+        try {
+          var response = await fetch('https://formspree.io/f/xkoyeryq', {
+            method: 'POST',
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            alert('Leak map request sent.');
+            contactForm.reset();
+          } else {
+            alert('Submission failed. Please email lab@liminullai.com.');
+          }
+        } catch (error) {
+          alert('Submission failed. Please email lab@liminullai.com.');
+        }
+      });
+    }
+    // Procedural 3D voxel hand: real anatomical mesh approximation, not a 2D screenshot mask.
+    (function(){
+      var canvas = document.getElementById('liquidStage');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var w=1,h=1,t=0,mouse={x:0,y:0};
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var pts=[];
+      function v(x,y,z){return {x:x,y:y,z:z};}
+      function lerp(a,b,u){return a+(b-a)*u;}
+      function hash(n){return (Math.sin(n*127.13)*43758.5453)%1;}
+      function addEllipsoid(cx,cy,cz,rx,ry,rz,count,tag){
+        for(var i=0;i<count;i++){
+          var a=i*2.399963, z=1-2*((i+.5)/count), r=Math.sqrt(Math.max(0,1-z*z));
+          var x=Math.cos(a)*r, y=z, zz=Math.sin(a)*r;
+          var bulge=.92+.10*Math.sin(i*12.7);
+          pts.push({x:cx+x*rx*bulge,y:cy+y*ry,z:cz+zz*rz*bulge,nx:x,ny:y,nz:zz,tag:tag,seed:i+tag*991});
+        }
+      }
+      function addCapsule(a,b,r0,r1,count,tag,flatten){
+        var ax=a.x,ay=a.y,az=a.z,bx=b.x,by=b.y,bz=b.z;
+        var dx=bx-ax,dy=by-ay,dz=bz-az, len=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
+        dx/=len; dy/=len; dz/=len;
+        var up=Math.abs(dy)>.86?v(1,0,0):v(0,1,0);
+        var ux=up.y*dz-up.z*dy, uy=up.z*dx-up.x*dz, uz=up.x*dy-up.y*dx;
+        var ul=Math.sqrt(ux*ux+uy*uy+uz*uz)||1; ux/=ul; uy/=ul; uz/=ul;
+        var vx=dy*uz-dz*uy, vy=dz*ux-dx*uz, vz=dx*uy-dy*ux;
+        for(var i=0;i<count;i++){
+          var u=(i+.5)/count;
+          var ring=9 + ((i+tag)%4);
+          var rr=lerp(r0,r1,u)*(1.0-.10*Math.sin(u*Math.PI));
+          for(var j=0;j<ring;j++){
+            var th=(j/ring)*Math.PI*2 + u*.7;
+            var oval=1 + flatten*Math.cos(th)*.22;
+            var px=Math.cos(th)*rr*oval, py=Math.sin(th)*rr*(1-flatten*.18);
+            var x=ax+dx*len*u + ux*px + vx*py;
+            var y=ay+dy*len*u + uy*px + vy*py;
+            var z=az+dz*len*u + uz*px + vz*py;
+            pts.push({x:x,y:y,z:z,nx:Math.cos(th),ny:Math.sin(th),nz:.25,tag:tag,seed:i*37+j*13+tag*883});
+          }
+        }
+      }
+      function buildHand(){
+        pts=[];
+        // Palm volume, angled like the user's reference. Ellipsoid gives a believable anatomical base.
+        addEllipsoid(0,-.18,0,.48,.62,.18,500,1);
+        addEllipsoid(.00,.20,.035,.38,.28,.14,180,2); // restrained knuckle pad; leaves dark gaps between fingers
+        addCapsule(v(-.07,-.70,.00),v(.07,-1.18,-.02),.24,.18,18,3,.25); // wrist/forearm stump
+        var xs=[-.46,-.16,.15,.43], lens=[1.04,1.22,1.10,.90], widths=[.098,.112,.101,.082];
+        for(var f=0;f<4;f++){
+          var x=xs[f], baseY=.43 + (f==1?.04:0) + (f==3?-.06:0), lean=(f-1.4)*.05;
+          var spread=(f-1.5)*.055;
+          var p0=v(x,baseY,.025), p1=v(x+lean*.7+spread*.25,baseY+lens[f]*.38,.03), p2=v(x+lean*1.25+spread*.70,baseY+lens[f]*.72,.015), p3=v(x+lean*1.65+spread*1.20,baseY+lens[f],-.005);
+          addCapsule(p0,p1,widths[f],widths[f]*.84,13,10+f,.10);
+          addCapsule(p1,p2,widths[f]*.82,widths[f]*.66,12,20+f,.08);
+          addCapsule(p2,p3,widths[f]*.64,widths[f]*.42,11,30+f,.05);
+          addEllipsoid(p1.x,p1.y,p1.z,widths[f]*1.12,widths[f]*.82,widths[f]*.72,45,40+f); // knuckle
+          addEllipsoid(p3.x,p3.y,p3.z,widths[f]*.56,widths[f]*.50,widths[f]*.45,32,50+f); // fingertip
+        }
+        // Thumb: real opposing angle, not a random side blob.
+        addCapsule(v(-.40,.00,.05),v(-.78,.14,.02),.145,.125,13,70,.18);
+        addCapsule(v(-.78,.14,.02),v(-1.10,.34,-.02),.125,.090,12,71,.12);
+        addCapsule(v(-1.10,.34,-.02),v(-1.34,.54,-.05),.090,.058,10,72,.08);
+        addEllipsoid(-1.19,.65,-.055,.07,.06,.05,36,73);
+        // Add subtle surface pores/extra voxels on palm for density.
+        for(var i=0;i<280;i++){
+          var x=(hash(i*2.1)-.5)*.90, y=(hash(i*3.3)-.5)*1.15-.06;
+          var inside=(x*x/(.50*.50)+y*y/(.68*.68));
+          if(inside<1){ var z=(hash(i*5.2)-.5)*.16; pts.push({x:x,y:y,z:z,nx:0,ny:0,nz:1,tag:80,seed:i*19}); }
+        }
+      }
+      function resize(){ var r=canvas.getBoundingClientRect(); w=Math.max(1,Math.floor(r.width)); h=Math.max(1,Math.floor(r.height)); canvas.width=Math.floor(w*dpr); canvas.height=Math.floor(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
+      function rot(p){
+        // Slow screensaver rotation: actual 3D object spin, intentionally much slower than before.
+        var yaw=.32 + Math.sin(t*.085)*.18 + mouse.x*.18;
+        var pitch=-.50 + Math.sin(t*.061)*.08 + mouse.y*.10;
+        var roll=-.46 + Math.sin(t*.047)*.04;
+        var x=p.x,y=p.y,z=p.z;
+        var cr=Math.cos(roll),sr=Math.sin(roll); var x1=x*cr-y*sr,y1=x*sr+y*cr,z1=z;
+        var cp=Math.cos(pitch),sp=Math.sin(pitch); var y2=y1*cp-z1*sp,z2=y1*sp+z1*cp,x2=x1;
+        var cy=Math.cos(yaw),sy=Math.sin(yaw); var x3=x2*cy+z2*sy,z3=-x2*sy+z2*cy,y3=y2;
+        var f=2.65/(2.65+z3);
+        return {x:w*.52+x3*Math.min(w,h)*.43*f,y:h*.58-y3*Math.min(w,h)*.43*f,z:z3,f:f,p:p};
+      }
+      function drawVoxel(q){
+        var p=q.p, wave=Math.sin(t*.72+p.seed*.21+q.z*2.8)*.5+.5;
+        var depth=Math.max(0,Math.min(1,(q.z+.70)/1.5));
+        var hue=247 + 42*wave + 12*Math.sin(p.tag);
+        var sat=96;
+        var light=18 + 46*depth + 18*wave;
+        var alpha=.46 + .48*depth;
+        var size=(2.3+4.9*q.f)*(0.86+.18*wave);
+        var xx=Math.round(q.x/4)*4, yy=Math.round(q.y/4)*4;
+        ctx.fillStyle='hsla('+hue+','+sat+'%,'+light+'%,'+alpha+')';
+        ctx.fillRect(xx,yy,size,size);
+        ctx.fillStyle='rgba(4,0,18,.45)';
+        ctx.fillRect(xx+size*.28,yy+size*.28,Math.max(1,size*.28),Math.max(1,size*.28));
+        if(wave>.83 && depth>.46){ ctx.fillStyle='rgba(188,66,255,.52)'; ctx.fillRect(xx+size*.62,yy+size*.10,Math.max(1,size*.22),Math.max(1,size*.22)); }
+      }
+      function draw(){
+        t += reduced ? 0 : .010;
+        ctx.clearRect(0,0,w,h); ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);
+        var bg=ctx.createRadialGradient(w*.52,h*.48,1,w*.52,h*.48,Math.min(w,h)*.76);
+        bg.addColorStop(0,'rgba(74,0,210,.16)'); bg.addColorStop(.45,'rgba(18,0,70,.11)'); bg.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=bg; ctx.fillRect(0,0,w,h);
+        var q=[]; for(var i=0;i<pts.length;i++) q.push(rot(pts[i])); q.sort(function(a,b){return a.z-b.z});
+        for(var j=0;j<q.length;j++) drawVoxel(q[j]);
+        // Minimal diagnostic grid/frame; no fake particle soup.
+        ctx.save(); ctx.globalAlpha=.06; ctx.strokeStyle='rgba(94,0,255,.35)'; ctx.lineWidth=1; for(var x=0;x<w;x+=18){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();} for(var y=0;y<h;y+=18){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();} ctx.restore();
+        ctx.strokeStyle='rgba(83,0,255,.78)'; ctx.lineWidth=2; ctx.strokeRect(.5,.5,w-1,h-1);
+        if(!reduced) requestAnimationFrame(draw);
+      }
+      canvas.addEventListener('pointermove',function(e){var r=canvas.getBoundingClientRect();mouse.x=(e.clientX-r.left)/r.width-.5;mouse.y=(e.clientY-r.top)/r.height-.5;});
+      canvas.addEventListener('pointerleave',function(){mouse.x=0;mouse.y=0;});
+      window.addEventListener('resize',resize); buildHand(); resize(); draw();
+    })();
+  </script>
+</body>
+</html>
