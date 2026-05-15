@@ -61,9 +61,106 @@
     .liquid-note{position:absolute;left:18px;top:18px;z-index:3;font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(233,229,220,.66);writing-mode:vertical-rl;transform:rotate(180deg)}
 
     @media(max-width:1000px){.topbar{grid-template-columns:1fr}.brand,.nav a,.top-actions a{border-right:0;border-bottom:1px solid var(--ink)}.hero{grid-template-columns:1fr}.hero-main{border-right:0}.hero-side{grid-template-rows:230px auto}.section-grid{grid-template-columns:1fr}.section-label{position:relative;top:0;border-right:0;border-bottom:2px solid var(--ink)}.archive-grid,.packages{grid-template-columns:1fr 1fr}.method,.contact-wrap,.hero-bottom{grid-template-columns:1fr}.cta-line{justify-content:flex-start}}
-    @media(max-width:650px){.frame{border-width:6px}.nav,.top-actions{grid-template-columns:1fr 1fr}.hero-main{padding:34px 18px}h1{font-size:52px}.archive-grid,.packages{grid-template-columns:1fr}.package{border-right:0;border-bottom:2px solid var(--ink)}.contact-copy,.contact-form,.section-body{padding:22px}.hero-side{display:none}footer{display:block;line-height:1.8}}
+    @media(max-width:650px){.frame{border-width:6px}.nav,.top-actions{grid-template-columns:1fr 1fr}.hero-main{padding:34px 18px}.hero{grid-template-columns:1fr}.hero-side{order:2}.mark-box{min-height:360px}h1{font-size:52px}.archive-grid,.packages{grid-template-columns:1fr}.package{border-right:0;border-bottom:2px solid var(--ink)}.contact-copy,.contact-form,.section-body{padding:22px}.hero-side{display:grid;grid-template-rows:360px auto;width:100%;min-height:360px}footer{display:block;line-height:1.8}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee div{animation:none}.archive-card:hover{transform:none}}
-  </style>
+  
+@media (max-width: 768px) {
+  .mark-box {
+    position: relative !important;
+    display: block !important;
+    width: min(92vw, 420px) !important;
+    height: min(92vw, 420px) !important;
+    min-height: 320px !important;
+    margin: 2rem auto 1rem !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .model-preview,
+  .td-video {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    z-index: 5 !important;
+  }
+
+  .glass-float {
+    transform: scale(0.82) !important;
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+  }
+
+  .liquid-note {
+    display: none !important;
+  }
+}
+
+/* MOBILE_SPIRE_CLEANUP_V2 */
+
+@media (max-width: 650px) {
+  .hero-side {
+    display: grid !important;
+    grid-template-rows: auto auto !important;
+    min-height: auto !important;
+    background: #000 !important;
+  }
+
+  .mark-box {
+    width: 100% !important;
+    height: 340px !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
+    margin: 0 !important;
+    border-top: 2px solid var(--ink) !important;
+    border-bottom: 2px solid var(--paper) !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  .mark-box:before {
+    width: 260px !important;
+    height: 260px !important;
+    opacity: 0.55 !important;
+  }
+
+  .mark-box:after {
+    bottom: 10px !important;
+    left: 12px !important;
+    font-size: 9px !important;
+  }
+
+  .mark-box .model-preview,
+  .mark-box .td-video,
+  .model-preview,
+  .td-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #000 !important;
+  }
+
+  .glass-float {
+    left: 12px !important;
+    right: auto !important;
+    bottom: 34px !important;
+    transform: scale(0.76) !important;
+    transform-origin: left bottom !important;
+    max-width: 210px !important;
+  }
+
+  .ops-panel {
+    min-height: auto !important;
+  }
+}
+
+</style>
 </head>
 <body>
   <div class="frame">
@@ -149,8 +246,8 @@
 
       <section id="contact">
         <div class="contact-wrap">
-          <div class="contact-copy"><h2>Where are leads going cold?</h2><p>Call, email, or send a short note. The form opens an email draft. Replace the placeholder inbox and phone number once your real contact channel is ready.</p><div class="contact-links"><a id="emailLink" href="mailto:lab@liminullai.com?subject=LiminullAI%20Leak%20Map"><span>Email</span><b id="emailText">lab@liminullai.com</b></a><a id="phoneLink" href="tel:"><span>Phone</span><b id="phoneText">Contact via form</b></a></div></div>
-          <form class="contact-form" id="contactForm"><div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required></div><div class="field"><label for="business">Business</label><input id="business" name="business" placeholder="Business name"></div><div class="field"><label for="contactInfo">Email or phone</label><input id="contactInfo" name="contactInfo" placeholder="Where should we reach you?"></div><div class="field"><label for="message">What needs fixing?</label><textarea id="message" name="message" placeholder="Website, missed calls, follow-up, reviews, CRM, social, local search..."></textarea></div><button class="btn primary" type="submit" style="width:100%">Open email draft</button></form>
+          <div class="contact-copy"><h2>Where are leads going cold?</h2><p>Call, email, or send a short note. Your request goes directly to the LiminullAI team for review.</p><div class="contact-links"><a id="emailLink" href="mailto:lab@liminullai.com?subject=LiminullAI%20Leak%20Map"><span>Email</span><b id="emailText">lab@liminullai.com</b></a><a id="phoneLink" href="tel:"><span>Phone</span><b id="phoneText">Contact via form</b></a></div></div>
+          <form class="contact-form" id="contactForm"><div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required></div><div class="field"><label for="business">Business</label><input id="business" name="business" placeholder="Business name"></div><div class="field"><label for="contactInfo">Email or phone</label><input id="contactInfo" name="contactInfo" placeholder="Where should we reach you?"></div><div class="field"><label for="message">What needs fixing?</label><textarea id="message" name="message" placeholder="Website, missed calls, follow-up, reviews, CRM, social, local search..."></textarea></div><button class="btn primary" type="submit" style="width:100%">Send inquiry</button></form>
         </div>
       </section>
     </main>
@@ -159,8 +256,8 @@
 
   <script>
     var COMPANY_EMAIL = 'lab@liminullai.com';
-var COMPANY_PHONE_DISPLAY = '440-714-9854 / 860-772-9621';
-var COMPANY_PHONE_TEL = '+14407149854';
+var COMPANY_PHONE_DISPLAY = '860-772-9621 / 440-714-9854';
+var COMPANY_PHONE_TEL = '+18607729621';
     var emailText = document.getElementById('emailText');
     var emailLink = document.getElementById('emailLink');
     var phoneText = document.getElementById('phoneText');
