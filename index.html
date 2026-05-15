@@ -412,5 +412,31 @@ var COMPANY_PHONE_TEL = '+18607729621';
       window.addEventListener('resize',resize); buildHand(); resize(); draw();
     })();
   </script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((video) => {
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.autoplay = true;
+      video.loop = true;
+
+      const tryPlay = () => {
+        video.play().catch(() => {});
+      };
+
+      tryPlay();
+
+      document.addEventListener("touchstart", tryPlay, { once: true });
+      document.addEventListener("click", tryPlay, { once: true });
+    });
+  });
+</script>
+
 </body>
 </html>
