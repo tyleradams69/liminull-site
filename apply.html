@@ -167,9 +167,18 @@
     .apply-main h1{margin:0;font-size:clamp(54px,8vw,128px);line-height:.84;letter-spacing:-.085em;text-transform:uppercase}
     .apply-main p{max-width:760px;font-size:19px;line-height:1.48;letter-spacing:-.025em}
     .apply-main p b{background:var(--ink);color:var(--paper);padding:0 4px}
-    .apply-panel{background:var(--ink);color:var(--paper);padding:38px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .apply-panel{position:relative;overflow:hidden;background:radial-gradient(circle at 88% 14%,rgba(70,244,227,.18),transparent 26%),linear-gradient(145deg,#050505 0%,#10100f 58%,#050505 100%);color:var(--paper);padding:38px;display:flex;flex-direction:column;justify-content:center;gap:28px}
+    .apply-panel:before{content:'';position:absolute;inset:18px;border:1px solid rgba(233,229,220,.18);pointer-events:none}
+    .apply-panel:after{content:'';position:absolute;right:-120px;bottom:-120px;width:320px;height:320px;border:1px solid rgba(70,244,227,.30);border-radius:50%;box-shadow:0 0 80px rgba(70,244,227,.10);pointer-events:none}
+    .apply-panel > *{position:relative;z-index:1}
     .apply-panel h2{font-size:clamp(42px,5vw,84px);line-height:.86;letter-spacing:-.075em;text-transform:uppercase;margin:0}
-    .apply-panel p{font-size:17px;line-height:1.5;color:#d8d0c3}
+    .apply-panel p{font-size:18px;line-height:1.5;color:#d8d0c3;max-width:720px}
+    .apply-points{display:grid;gap:12px;margin-top:6px}
+    .apply-point{display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid rgba(233,229,220,.24);background:linear-gradient(135deg,rgba(251,250,246,.09),rgba(251,250,246,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+    .apply-point span{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(70,244,227,.55);color:var(--acid);font-family:'IBM Plex Mono';font-size:12px}
+    .apply-point b{display:block;font-size:15px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+    .apply-point small{display:block;color:#bdb6aa;font-size:13px;line-height:1.45}
+    .apply-note{font-family:'IBM Plex Mono';font-size:11px;line-height:1.55;text-transform:uppercase;letter-spacing:.09em;color:rgba(233,229,220,.66);border-top:1px solid rgba(233,229,220,.20);padding-top:16px}
     .role-grid{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);border-bottom:0}
     .role-card{padding:20px;min-height:220px;border-right:2px solid var(--ink);background:rgba(233,229,220,.72)}
     .role-card:last-child{border-right:0}
@@ -218,13 +227,12 @@
             <h2>Sales without the circus.</h2>
             <p>This is for people who can listen, spot operational leaks, explain value clearly, and bring qualified local operators into the LiminullAI pipeline.</p>
           </div>
-          <div class="ops-panel mono">
-            <div class="ops-title"><span>candidate signal</span><span>open</span></div>
-            <div class="ops-row"><span>skill</span><b>Outbound + follow-up</b><em>needed</em></div>
-            <div class="ops-row"><span>market</span><b>Local service businesses</b><em>active</em></div>
-            <div class="ops-row"><span>fit</span><b>Clear communicator</b><em>required</em></div>
-            <div class="scanline"></div>
+          <div class="apply-points" aria-label="Sales role highlights">
+            <div class="apply-point"><span>01</span><div><b>Spot the leak</b><small>Find owners losing jobs through slow response, weak follow-up, or unclear intake.</small></div></div>
+            <div class="apply-point"><span>02</span><div><b>Start the right conversation</b><small>Explain practical AI systems in plain operator language, not tech theater.</small></div></div>
+            <div class="apply-point"><span>03</span><div><b>Hand off clean context</b><small>Bring qualified opportunities to the team with useful notes and next steps.</small></div></div>
           </div>
+          <div class="apply-note">Open for sales-minded operators, connectors, and local-market people who can move with care.</div>
         </aside>
       </section>
 
