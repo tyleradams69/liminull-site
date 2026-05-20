@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply to Work With Us — LiminullAI Sales</title>
+  <meta name="description" content="Apply to work with LiminullAI as a sales partner helping local businesses adopt practical AI operating systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#e9e5dc;
+      --paper2:#d8d0c3;
+      --ink:#070707;
+      --muted:#6e695f;
+      --line:#1d1b17;
+      --line-soft:rgba(29,27,23,.18);
+      --black:#050505;
+      --white:#fbfaf6;
+      --acid:#46f4e3;
+      --rust:#9b402f;
+      --blue:#1d46ff;
+      --max:1440px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    ::selection{background:var(--ink);color:var(--paper)}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+    .frame{min-height:100vh;border:10px solid var(--ink);background:
+      linear-gradient(rgba(7,7,7,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(7,7,7,.028) 1px, transparent 1px),
+      var(--paper);background-size:42px 42px;}
+    .topbar{position:sticky;top:0;z-index:40;display:grid;grid-template-columns:280px minmax(0,1fr) 240px;align-items:stretch;border-bottom:2px solid var(--ink);background:rgba(233,229,220,.94);backdrop-filter:blur(10px)}
+    .brand{display:flex;align-items:center;gap:14px;padding:10px 18px;border-right:2px solid var(--ink)}
+    .brand img{width:60px;height:60px;object-fit:contain;padding:0;border:2px solid var(--ink);background:var(--ink);filter:none;image-rendering:auto;transform:translateZ(0)}
+    .brand b{display:block;font-size:21px;letter-spacing:-.045em}.brand span{display:block;margin-top:2px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+    .nav{display:grid;grid-template-columns:repeat(4,1fr)}.nav a{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}.nav a:hover{background:var(--ink);color:var(--paper)}
+    .top-actions{display:grid;grid-template-columns:1fr 1fr}.top-actions a{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}.top-actions a:last-child{background:var(--ink);color:var(--paper)}.top-actions a:hover{background:var(--acid);color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1fr 410px;min-height:calc(100vh - 82px);border-bottom:2px solid var(--ink)}
+    .hero-main{position:relative;padding:52px clamp(24px,5vw,74px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-right:2px solid var(--ink)}
+    .stamp-row{display:flex;flex-wrap:wrap;gap:8px}.stamp{border:1px solid var(--ink);padding:7px 9px;background:rgba(233,229,220,.82);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.stamp.hot{background:var(--acid)}
+    h1{margin:0;max-width:1000px;font-size:clamp(62px,10vw,156px);line-height:.82;letter-spacing:-.085em;font-weight:700;text-transform:uppercase}.h1-small{font-weight:500;color:transparent;-webkit-text-stroke:2px var(--ink)}
+    .hero-bottom{display:grid;grid-template-columns:minmax(260px,520px) 1fr;gap:36px;align-items:end}.lead{font-size:18px;line-height:1.45;letter-spacing:-.025em;max-width:560px}.lead b{background:var(--ink);color:var(--paper);padding:0 4px}.cta-line{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}.btn.primary{background:var(--ink);color:var(--paper)}.btn:hover{background:var(--acid);color:var(--ink)}
+    .hero-side{display:grid;grid-template-rows:300px 1fr;background:var(--black);color:var(--paper)}.mark-box{position:relative;display:grid;place-items:center;border-bottom:2px solid var(--paper);overflow:hidden}.mark-box:before{content:'';position:absolute;width:360px;height:360px;border:1px solid rgba(233,229,220,.35);border-radius:50%}.mark-box:after{content:'LIMINULL / NULL-SPACE';position:absolute;bottom:14px;left:16px;font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.12em;color:rgba(233,229,220,.62)}.mark-box img{position:relative;width:170px;height:170px;object-fit:cover;filter:grayscale(1) contrast(1.2);mix-blend-mode:screen}
+    .ops-panel{padding:18px;display:flex;flex-direction:column;gap:12px}.ops-title{display:flex;justify-content:space-between;border-bottom:1px solid rgba(233,229,220,.32);padding-bottom:10px;font-size:11px;color:rgba(233,229,220,.72);text-transform:uppercase;letter-spacing:.1em}.ops-row{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:center;border:1px solid rgba(233,229,220,.22);padding:11px 10px}.ops-row span:first-child{color:rgba(233,229,220,.58);font-size:10px}.ops-row b{font-size:13px}.ops-row em{font-style:normal;color:var(--acid);font-size:10px;text-transform:uppercase}.scanline{height:9px;background:repeating-linear-gradient(90deg,var(--acid) 0 12px,transparent 12px 20px);margin-top:auto}
+    .marquee{overflow:hidden;border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper);white-space:nowrap}.marquee div{display:inline-block;padding:12px 0 12px 100vw;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;animation:marquee 28s linear infinite}.marquee span{margin-right:42px;color:var(--acid)}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    section{border-bottom:2px solid var(--ink)}.section-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:320px 1fr}.section-label{border-right:2px solid var(--ink);padding:28px 22px;position:sticky;top:82px;height:max-content}.section-label .num{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.section-label h2{margin:16px 0 0;font-size:34px;line-height:.92;letter-spacing:-.06em;text-transform:uppercase}.section-body{padding:28px}.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);border-left:2px solid var(--ink)}.archive-card{min-height:260px;padding:18px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);background:rgba(233,229,220,.66);display:flex;flex-direction:column;justify-content:space-between;transition:.18s ease}.archive-card:hover{background:var(--ink);color:var(--paper);transform:translate(-4px,-4px);box-shadow:4px 4px 0 var(--acid)}.archive-card .id{font-size:11px;color:var(--muted);text-transform:uppercase}.archive-card:hover .id{color:var(--acid)}.archive-card h3{font-size:30px;line-height:.95;letter-spacing:-.06em;margin:24px 0 12px;text-transform:uppercase}.archive-card p{font-size:14px;line-height:1.42;margin:0}.tagline{display:flex;justify-content:space-between;gap:10px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .method{display:grid;grid-template-columns:1.05fr .95fr;gap:28px}.manifesto{border:2px solid var(--ink);padding:26px;background:var(--black);color:var(--paper)}.manifesto h3{margin:0 0 22px;font-size:46px;line-height:.88;letter-spacing:-.07em;text-transform:uppercase}.manifesto p{font-size:18px;line-height:1.5;color:#d9d4ca}.method-list{border-top:2px solid var(--ink)}.method-row{display:grid;grid-template-columns:82px 1fr;border-bottom:2px solid var(--ink);min-height:112px}.method-row span{border-right:2px solid var(--ink);padding:18px;font-size:11px;color:var(--muted)}.method-row div{padding:18px}.method-row b{display:block;font-size:22px;letter-spacing:-.04em;text-transform:uppercase}.method-row p{margin:8px 0 0;color:var(--muted);line-height:1.45}
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink)}.package{min-height:420px;padding:20px;border-right:2px solid var(--ink);display:flex;flex-direction:column}.package:last-child{border-right:0}.package:nth-child(2){background:var(--ink);color:var(--paper)}.package small{font-family:'IBM Plex Mono';text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.package:nth-child(2) small{color:var(--acid)}.package h3{font-size:38px;line-height:.9;letter-spacing:-.065em;text-transform:uppercase;margin:22px 0}.price{font-size:18px;font-weight:700;margin-bottom:20px}.package ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}.package li{font-size:14px;line-height:1.35}.package li:before{content:'— ';font-family:'IBM Plex Mono'}.package .btn{margin-top:auto;width:100%}.package:nth-child(2) .btn{background:var(--acid);color:var(--ink)}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:540px}.contact-copy{padding:38px;border-right:2px solid var(--ink);background:var(--ink);color:var(--paper)}.contact-copy h2{font-size:clamp(48px,7vw,110px);line-height:.82;letter-spacing:-.08em;text-transform:uppercase;margin:0}.contact-copy p{max-width:560px;font-size:18px;line-height:1.48;color:#d8d0c3}.contact-links{display:grid;gap:12px;margin-top:34px}.contact-links a{display:flex;justify-content:space-between;gap:16px;border:1px solid rgba(233,229,220,.45);padding:14px;color:var(--paper)}.contact-links span{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;color:var(--acid)}.contact-form{padding:38px}.field{display:grid;gap:8px;margin-bottom:14px}.field label{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.1em}.field input,.field textarea{width:100%;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:14px;outline:none}.field textarea{min-height:160px;resize:vertical}.field input:focus,.field textarea:focus{background:var(--white);box-shadow:4px 4px 0 var(--acid)}
+    footer{display:flex;justify-content:space-between;gap:20px;padding:18px 22px;font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--paper)}
+
+    .liquid-stage,.td-video,.model-preview{position:absolute;inset:0;width:100%;height:100%;display:block;background:#000}.td-video{object-fit:cover;background:#000;filter:contrast(1.08) saturate(1.08)}.model-preview{object-fit:cover;filter:contrast(1.16) saturate(1.22) brightness(1.08);mix-blend-mode:normal;z-index:2}.seamless-spire{position:absolute;inset:0;z-index:2;background:#000;overflow:hidden}.seamless-spire .td-video{z-index:1;opacity:0!important;transition:opacity .72s linear;will-change:opacity;transform:translateZ(0)}.seamless-spire .td-video.is-active{opacity:1!important;z-index:2}
+    .glass-float{position:absolute;right:18px;top:18px;z-index:3;width:112px;padding:10px 10px 12px;border:1px solid rgba(251,250,246,.36);background:linear-gradient(135deg,rgba(251,250,246,.20),rgba(251,250,246,.05));backdrop-filter:blur(18px) saturate(1.45);-webkit-backdrop-filter:blur(18px) saturate(1.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.48),0 18px 50px rgba(0,0,0,.38);color:var(--paper);font-size:9px;text-transform:uppercase;letter-spacing:.09em;line-height:1.4;mix-blend-mode:screen}
+    .glass-float:before{content:'';position:absolute;inset:1px;border-top:1px solid rgba(255,255,255,.55);border-left:1px solid rgba(255,255,255,.18);pointer-events:none}.glass-float b{display:block;color:var(--acid);font-size:17px;letter-spacing:-.04em;margin-top:4px}.mark-box img:not(.model-preview){z-index:2;width:98px;height:98px;opacity:.78;filter:grayscale(1) contrast(1.35) drop-shadow(0 0 30px rgba(233,229,220,.38));mix-blend-mode:screen}.mark-box .model-preview{position:absolute;inset:0;width:100%;height:100%;opacity:1;filter:contrast(1.16) saturate(1.22) brightness(1.08);mix-blend-mode:normal}.mark-box:before{z-index:1}.mark-box:after{z-index:4}.ops-panel{position:relative;overflow:hidden}.ops-panel:before{content:'';position:absolute;inset:12px;border:1px solid rgba(251,250,246,.13);background:linear-gradient(135deg,rgba(251,250,246,.10),rgba(251,250,246,.025));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);pointer-events:none}.ops-title,.ops-row,.scanline{position:relative;z-index:1}.ops-row{background:linear-gradient(135deg,rgba(251,250,246,.10),rgba(251,250,246,.025));backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+    .archive-card,.package,.manifesto,.contact-copy{position:relative;overflow:hidden}.archive-card:before,.package:before,.manifesto:before,.contact-copy:before{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 18%,rgba(255,255,255,.18) 28%,transparent 42%);transform:translateX(-120%);transition:transform .65s cubic-bezier(.2,.8,.2,1);pointer-events:none}.archive-card:hover:before,.package:hover:before,.manifesto:hover:before,.contact-copy:hover:before{transform:translateX(120%)}
+    .liquid-note{position:absolute;left:18px;top:18px;z-index:3;font-family:'IBM Plex Mono';font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(233,229,220,.66);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+    @media(max-width:1000px){.topbar{grid-template-columns:1fr}.brand,.nav a,.top-actions a{border-right:0;border-bottom:1px solid var(--ink)}.hero{grid-template-columns:1fr}.hero-main{border-right:0}.hero-side{grid-template-rows:230px auto}.section-grid{grid-template-columns:1fr}.section-label{position:relative;top:0;border-right:0;border-bottom:2px solid var(--ink)}.archive-grid,.packages{grid-template-columns:1fr 1fr}.method,.contact-wrap,.hero-bottom{grid-template-columns:1fr}.cta-line{justify-content:flex-start}}
+    @media(max-width:650px){.frame{border-width:6px}.nav{overflow-x:auto;overflow-y:hidden}.nav a{flex:0 0 auto;min-width:58px}.top-actions{grid-template-columns:1fr 1fr}.hero-main{padding:34px 18px}.hero{grid-template-columns:1fr}.hero-side{order:2}.mark-box{min-height:360px}h1{font-size:52px}.archive-grid,.packages{grid-template-columns:1fr}.package{border-right:0;border-bottom:2px solid var(--ink)}.contact-copy,.contact-form,.section-body{padding:22px}.hero-side{display:grid;grid-template-rows:360px auto;width:100%;min-height:360px}footer{display:block;line-height:1.8}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee div{animation:none}.archive-card:hover{transform:none}}
+  
+@media (max-width: 768px) {
+  .mark-box {
+    position: relative !important;
+    display: block !important;
+    width: min(92vw, 420px) !important;
+    height: min(92vw, 420px) !important;
+    min-height: 320px !important;
+    margin: 2rem auto 1rem !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .model-preview,
+  .td-video {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    z-index: 5 !important;
+  }
+
+  .glass-float {
+    transform: scale(0.82) !important;
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+  }
+
+  .liquid-note {
+    display: none !important;
+  }
+}
+
+/* MOBILE_SPIRE_CLEANUP_V2 */
+
+@media (max-width: 650px) {
+  .hero-side {
+    display: grid !important;
+    grid-template-rows: auto auto !important;
+    min-height: auto !important;
+    background: #000 !important;
+  }
+
+  .mark-box {
+    width: 100% !important;
+    height: 340px !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
+    margin: 0 !important;
+    border-top: 2px solid var(--ink) !important;
+    border-bottom: 2px solid var(--paper) !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  .mark-box:before {
+    width: 260px !important;
+    height: 260px !important;
+    opacity: 0.55 !important;
+  }
+
+  .mark-box:after {
+    bottom: 10px !important;
+    left: 12px !important;
+    font-size: 9px !important;
+  }
+
+  .mark-box .model-preview,
+  .mark-box .td-video,
+  .model-preview,
+  .td-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: #000 !important;
+  }
+
+  .glass-float {
+    left: 12px !important;
+    right: auto !important;
+    bottom: 34px !important;
+    transform: scale(0.76) !important;
+    transform-origin: left bottom !important;
+    max-width: 210px !important;
+  }
+
+  .ops-panel {
+    min-height: auto !important;
+  }
+}
+
+
+    .apply-hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:calc(100vh - 82px);border-bottom:2px solid var(--ink)}
+    .apply-main{padding:52px clamp(24px,5vw,74px);display:flex;flex-direction:column;justify-content:space-between;gap:38px;border-right:2px solid var(--ink)}
+    .apply-kicker{font-family:'IBM Plex Mono';font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .apply-main h1{margin:0;font-size:clamp(54px,8vw,128px);line-height:.84;letter-spacing:-.085em;text-transform:uppercase}
+    .apply-main p{max-width:760px;font-size:19px;line-height:1.48;letter-spacing:-.025em}
+    .apply-main p b{background:var(--ink);color:var(--paper);padding:0 4px}
+    .apply-panel{background:var(--ink);color:var(--paper);padding:38px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+    .apply-panel h2{font-size:clamp(42px,5vw,84px);line-height:.86;letter-spacing:-.075em;text-transform:uppercase;margin:0}
+    .apply-panel p{font-size:17px;line-height:1.5;color:#d8d0c3}
+    .role-grid{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);border-bottom:0}
+    .role-card{padding:20px;min-height:220px;border-right:2px solid var(--ink);background:rgba(233,229,220,.72)}
+    .role-card:last-child{border-right:0}
+    .role-card small{font-family:'IBM Plex Mono';font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+    .role-card h3{font-size:30px;line-height:.94;letter-spacing:-.06em;text-transform:uppercase;margin:18px 0 12px}
+    .role-card p{font-size:14px;line-height:1.45;margin:0;color:var(--muted)}
+    .apply-form-wrap{display:grid;grid-template-columns:1fr 1.35fr;border-top:2px solid var(--ink)}
+    .apply-form-copy{padding:38px;background:var(--black);color:var(--paper);border-right:2px solid var(--ink)}
+    .apply-form-copy h2{font-size:clamp(44px,6vw,96px);line-height:.84;letter-spacing:-.08em;text-transform:uppercase;margin:0 0 20px}
+    .apply-form-copy p{font-size:17px;line-height:1.5;color:#d8d0c3}
+    .apply-form{padding:38px;background:var(--paper)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    select{width:100%;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:14px;outline:none}
+    select:focus{background:var(--white);box-shadow:4px 4px 0 var(--acid)}
+    .form-note{font-family:'IBM Plex Mono';font-size:11px;line-height:1.5;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:14px 0 0}
+    @media(max-width:1000px){.apply-hero,.apply-form-wrap{grid-template-columns:1fr}.apply-main{border-right:0}.apply-panel,.apply-form-copy{border-right:0;border-top:2px solid var(--ink)}.role-grid{grid-template-columns:1fr}.role-card{border-right:0;border-bottom:2px solid var(--ink)}}
+    @media(max-width:650px){.nav{overflow-x:auto;overflow-y:hidden}.nav a{flex:0 0 auto;min-width:58px}.top-actions{grid-template-columns:1fr 1fr}.field-row{grid-template-columns:1fr}.apply-main,.apply-panel,.apply-form,.apply-form-copy{padding:22px}}
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header class="topbar">
+      <a class="brand" href="index.html#top" aria-label="LiminullAI home">
+        <img src="assets/logo-header.svg" alt="Liminull logo">
+        <div><b>LIMINULL</b><span>Applied AI for local operators</span></div>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#systems">Systems</a><a href="index.html#method">Method</a><a href="index.html#offers">Offers</a><a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="top-actions"><a id="phoneTop" href="tel:">Call</a><a href="#apply-form">Apply Now</a></div>
+    </header>
+
+    <main id="top">
+      <section class="apply-hero">
+        <div class="apply-main">
+          <div class="stamp-row mono"><span class="stamp hot">LIMINULLAI / SALES</span><span class="stamp">local operators</span><span class="stamp">commission path</span><span class="stamp">field intelligence</span></div>
+          <div>
+            <div class="apply-kicker">Apply to work with us</div>
+            <h1>Help local businesses stop losing leads.</h1>
+          </div>
+          <p>We are hiring sales-minded operators who can find local businesses with broken follow-up, weak capture, messy CRM, or slow response times — then help them understand what a practical AI operating layer can fix.</p>
+          <div class="cta-line"><a class="btn primary" href="#apply-form">Start application</a><a class="btn" href="index.html#systems">See systems</a></div>
+        </div>
+        <aside class="apply-panel">
+          <div>
+            <h2>Sales without the circus.</h2>
+            <p>This is for people who can listen, spot operational leaks, explain value clearly, and bring qualified local operators into the LiminullAI pipeline.</p>
+          </div>
+          <div class="ops-panel mono">
+            <div class="ops-title"><span>candidate signal</span><span>open</span></div>
+            <div class="ops-row"><span>skill</span><b>Outbound + follow-up</b><em>needed</em></div>
+            <div class="ops-row"><span>market</span><b>Local service businesses</b><em>active</em></div>
+            <div class="ops-row"><span>fit</span><b>Clear communicator</b><em>required</em></div>
+            <div class="scanline"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section>
+        <div class="section-grid">
+          <div class="section-label"><div class="num mono">Hiring 001</div><h2>What we are looking for</h2></div>
+          <div class="section-body">
+            <div class="role-grid">
+              <article class="role-card"><small>Signal</small><h3>Find real pain</h3><p>Identify businesses losing revenue through missed calls, slow replies, weak websites, bad handoffs, or messy customer follow-up.</p></article>
+              <article class="role-card"><small>Conversation</small><h3>Explain simply</h3><p>Translate AI and automation into concrete business outcomes: more booked jobs, better visibility, faster response, cleaner operations.</p></article>
+              <article class="role-card"><small>Ownership</small><h3>Move cleanly</h3><p>Keep notes, follow up, qualify opportunities, and hand off context without chaos.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="apply-form">
+        <div class="apply-form-wrap">
+          <div class="apply-form-copy"><h2>Apply to work with us.</h2><p>Send the basics. If there is fit, we will reach out with next steps.</p><p class="form-note">No resume theater required. Clear answers beat buzzwords.</p></div>
+          <form class="apply-form" id="salesApplyForm">
+            <input type="hidden" name="form_type" value="sales_application">
+            <input type="hidden" name="_subject" value="New LiminullAI sales application">
+            <div class="field-row">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" required></div>
+              <div class="field"><label for="location">Location</label><input id="location" name="location" placeholder="City / state / region"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required></div>
+              <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" placeholder="Best number"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="experience">Sales experience</label><select id="experience" name="sales_experience"><option value="">Select one</option><option>New but hungry</option><option>1–2 years</option><option>3–5 years</option><option>5+ years</option><option>Founder/operator background</option></select></div>
+              <div class="field"><label for="availability">Availability</label><select id="availability" name="availability"><option value="">Select one</option><option>Part-time</option><option>Full-time</option><option>Commission/project based</option><option>Open to discussing</option></select></div>
+            </div>
+            <div class="field"><label for="localMarket">What local market or industry do you know best?</label><input id="localMarket" name="local_market" placeholder="Roofers, med spas, contractors, law firms, restaurants..."></div>
+            <div class="field"><label for="why">Why would you be good at selling LiminullAI?</label><textarea id="why" name="why_liminull" placeholder="Tell us how you find prospects, build trust, follow up, or understand local business pain." required></textarea></div>
+            <div class="field"><label for="proof">Links / proof / notes</label><textarea id="proof" name="proof_or_links" placeholder="LinkedIn, website, past work, wins, or anything we should know."></textarea></div>
+            <button class="btn primary" type="submit" style="width:100%">Submit application</button>
+            <p class="form-note">Applications go to the LiminullAI team through Formspree. If the form fails, email lab@liminullai.com.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer><div>LiminullAI / sales applications</div><div><a href="index.html#top">home</a> · <a href="index.html#contact">contact</a> · <a href="mailto:lab@liminullai.com">lab@liminullai.com</a></div></footer>
+  </div>
+
+  <script>
+    var COMPANY_PHONE_TEL = '+186****9621';
+    var phoneTop = document.getElementById('phoneTop');
+    var salesApplyForm = document.getElementById('salesApplyForm');
+    if (phoneTop) phoneTop.href = 'tel:' + COMPANY_PHONE_TEL;
+    if (salesApplyForm) {
+      salesApplyForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var data = new FormData(salesApplyForm);
+        try {
+          var response = await fetch('https://formspree.io/f/xkoyeryq', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) {
+            alert('Application sent. We will review it and reach out if there is fit.');
+            salesApplyForm.reset();
+          } else {
+            alert('Submission failed. Please email lab@liminullai.com.');
+          }
+        } catch (error) {
+          alert('Submission failed. Please email lab@liminullai.com.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
